@@ -25,7 +25,7 @@ export default function Home() {
       const data = await response.json();
 
       if (data.success) {
-        setResult("You're boyfriend will read the message sent from incess");
+        setResult("You're boyfriend will read the message sent by incess");
         event.target.reset(); // Reset the form fields
       } else {
         console.error("Error:", data);
@@ -101,6 +101,7 @@ export default function Home() {
             <option value="😡">😡</option>
             <option value="😴">😴</option>
             <option value="🤩">🤩</option>
+            <option value={"🥱"}>🥱</option>
           </select>
         </div>
 
@@ -110,7 +111,7 @@ export default function Home() {
             htmlFor="severity"
             className="block mb-2 text-sm font-medium text-gray-700"
           >
-            How can we help? 💡
+            How can i help? 💡
           </label>
           <select
             name="severity"
@@ -126,6 +127,7 @@ export default function Home() {
             <option value="📝">📝 Write it down</option>
             <option value="🎧">🎧 Listen to music</option>
             <option value="🏃‍♀️">🏃‍♀️ Go for a walk</option>
+            <option value="🍪">🍪 Buy munchies</option>
             <option value="custom">💬 Custom solution</option>
           </select>
         </div>
@@ -154,7 +156,7 @@ export default function Home() {
           type="submit"
           className="w-full px-4 py-3 font-semibold text-white transition-colors duration-300 bg-pink-600 rounded-md hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2"
         >
-          Submit Form
+          Send
         </button>
       </form>
 
