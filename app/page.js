@@ -7,7 +7,7 @@ export default function Home() {
 
   const onSubmit = async (event) => {
     event.preventDefault(); // Prevent default form submission behavior
-    setResult("Sending....");
+    setResult("Sending to you're boyfriend....");
 
     try {
       const formData = new FormData(event.target);
@@ -25,7 +25,7 @@ export default function Home() {
       const data = await response.json();
 
       if (data.success) {
-        setResult("Hehe, Berhasil terkirim");
+        setResult("You're boyfriend will read the message sent from incess");
         event.target.reset(); // Reset the form fields
       } else {
         console.error("Error:", data);
