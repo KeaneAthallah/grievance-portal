@@ -1,29 +1,39 @@
 "use client";
 import React from "react";
+
 export default function Home() {
   const [result, setResult] = React.useState("");
   const [showCustomSolution, setShowCustomSolution] = React.useState(false);
 
   const onSubmit = async (event) => {
-    event.preventDefault();
+    event.preventDefault(); // Prevent default form submission behavior
     setResult("Sending....");
-    const formData = new FormData(event.target);
 
-    formData.append("access_key", "ede86353-0c0e-4760-a3f8-9373961d34b0");
+    try {
+      const formData = new FormData(event.target);
+      formData.append("access_key", "ede86353-0c0e-4760-a3f8-9373961d34b0");
 
-    const response = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      body: formData,
-    });
+      const response = await fetch("https://api.web3forms.com/submit ", {
+        method: "POST",
+        body: formData,
+      });
 
-    const data = await response.json();
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
 
-    if (data.success) {
-      setResult("Hehe, Berhasil terkirim");
-      event.target.reset();
-    } else {
-      console.log("Error", data);
-      setResult(data.message);
+      const data = await response.json();
+
+      if (data.success) {
+        setResult("Hehe, Berhasil terkirim");
+        event.target.reset(); // Reset the form fields
+      } else {
+        console.error("Error:", data);
+        setResult(data.message || "Something went wrong!");
+      }
+    } catch (error) {
+      console.error("Network or other error:", error);
+      setResult("Failed to send the form. Please try again.");
     }
   };
 
@@ -31,7 +41,7 @@ export default function Home() {
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
       <form
         className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-lg"
-        onSubmit={onSubmit()}
+        onSubmit={onSubmit} // Pass the function reference here
       >
         {/* Title Input */}
         <div className="relative">
@@ -86,11 +96,11 @@ export default function Home() {
             <option value="" disabled selected>
               Mood
             </option>
-            <option value="😊">😊 </option>
-            <option value="😢">😢 </option>
-            <option value="😡">😡 </option>
-            <option value="😴">😴 </option>
-            <option value="🤩">🤩 </option>
+            <option value="😊">😊</option>
+            <option value="😢">😢</option>
+            <option value="😡">😡</option>
+            <option value="😴">😴</option>
+            <option value="🤩">🤩</option>
           </select>
         </div>
 
