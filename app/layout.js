@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/princess.png" />
+        <link rel="icon" href="/pincess-diana.github.io/princess.png" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
