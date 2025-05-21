@@ -4,12 +4,14 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const [username, setUsername] = React.useState("");
   const router = useRouter();
   const [result, setResult] = React.useState("");
   const [showCustomSolution, setShowCustomSolution] = React.useState(false);
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const username = sessionStorage.getItem("username");
+      const username = sessionStorage.getItem("username") || "";
+      setUsername(username);
       if (!username) {
         router.push("/login");
       }
@@ -53,11 +55,7 @@ export default function Home() {
         className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-lg"
         onSubmit={onSubmit} // Pass the function reference here
       >
-        <input
-          type="hidden"
-          value={sessionStorage.getItem("username") || ""}
-          name="username"
-        />
+        <input type="hidden" value={username} name="username" />
         {/* Title Input */}
         <div className="relative">
           <label
