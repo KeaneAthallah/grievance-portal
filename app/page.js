@@ -1,10 +1,18 @@
 "use client";
 import React from "react";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
   const [result, setResult] = React.useState("");
   const [showCustomSolution, setShowCustomSolution] = React.useState(false);
-
+  useEffect(() => {
+    const username = sessionStorage.getItem("username");
+    if (!username) {
+      router.push("/login");
+    }
+  }, [router]);
   const onSubmit = async (event) => {
     event.preventDefault(); // Prevent default form submission behavior
     setResult("Sending to you're boyfriend....");
@@ -43,6 +51,11 @@ export default function Home() {
         className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-lg"
         onSubmit={onSubmit} // Pass the function reference here
       >
+        <input
+          type="hidden"
+          value={sessionStorage.getItem("username") || ""}
+          name="username"
+        />
         {/* Title Input */}
         <div className="relative">
           <label
