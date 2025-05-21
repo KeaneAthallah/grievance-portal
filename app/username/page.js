@@ -29,7 +29,7 @@ export default function UsernamePage() {
         {/* Header with Image */}
         <div>
           <img
-            src="/cinna.png"
+            src="pincess-diana.github.io/cinna.png"
             alt="Cinnamoroll"
             className="w-24 h-24 mx-auto rounded-full border-4 border-blue-300"
           />

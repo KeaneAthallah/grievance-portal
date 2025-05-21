@@ -28,7 +28,7 @@ export default function LoginPage() {
         {/* Header with Image */}
         <div>
           <img
-            src="/melo.png"
+            src="/pincess-diana.github.io/melo.png"
             alt="My Melody"
             className="w-24 h-24 mx-auto rounded-full border-4 border-pink-300"
           />
