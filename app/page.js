@@ -37,7 +37,7 @@ export default function Home() {
       const data = await response.json();
 
       if (data.success) {
-        setResult("You're boyfriend will read the message sent by incess");
+        setResult("Your boyfriend will read the message sent by incess");
         event.target.reset(); // Reset the form fields
       } else {
         console.error("Error:", data);
