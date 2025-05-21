@@ -8,9 +8,11 @@ export default function Home() {
   const [result, setResult] = React.useState("");
   const [showCustomSolution, setShowCustomSolution] = React.useState(false);
   useEffect(() => {
-    const username = sessionStorage.getItem("username");
-    if (!username) {
-      router.push("/login");
+    if (typeof window !== "undefined") {
+      const username = sessionStorage.getItem("username");
+      if (!username) {
+        router.push("/login");
+      }
     }
   }, [router]);
   const onSubmit = async (event) => {
