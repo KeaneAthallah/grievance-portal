@@ -20,7 +20,7 @@ export default function UsernamePage() {
     } catch (error) {}
 
     // Redirect using window.location.href for static hosting
-    window.location.href = "/";
+    window.location.href = "/pincess-diana.github.io/";
   };
 
   return (
